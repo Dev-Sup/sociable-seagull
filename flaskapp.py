@@ -22,7 +22,7 @@ def test():
 
 @app.route('/page')
 def page():
-    data = requests.get(devsup.pp.ua).content
+    data = requests.get('http://devsup.pp.ua').content
     return data
     #return "It works!"
 
