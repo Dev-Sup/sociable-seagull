@@ -2,6 +2,8 @@ import os
 from datetime import datetime
 from flask import Flask, request, flash, url_for, redirect, \
      render_template, abort, send_from_directory
+import requests
+
 
 app = Flask(__name__)
 app.config.from_pyfile('flaskapp.cfg')
@@ -20,7 +22,9 @@ def test():
 
 @app.route('/page')
 def page():
-	return "It works!"
+    data = requests.get(devsup.pp.ua).content
+    return data
+    #return "It works!"
 
 if __name__ == '__main__':
     app.run()
