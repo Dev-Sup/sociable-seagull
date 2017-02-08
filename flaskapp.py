@@ -42,7 +42,20 @@ def page():
     
 @app.route('/oauth')
 def oauth() :
-    return request.form['code']
+    url = 'https://oauth.vk.com/access_token'
+    client_id = '5861520'
+    client_secret = 'mUNUU8orb4FZuyZBabgS'
+    
+    payload = {
+        'client_id' : client_id,
+        'client_secret' : client_secret,
+        'redirect_uri' : 'http://sociableseagull-devsup.rhcloud.com/oauth',
+        'code' : request.form['code']
+    }
+    
+    data = requests.get(url, params = payload).content
+    
+    return data
 
 if __name__ == '__main__':
     app.run()
