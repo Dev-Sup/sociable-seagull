@@ -29,7 +29,7 @@ def page():
     payload = {
         'client_id' : client_id,
         'redirect_uri' : 'http://sociableseagull-devsup.rhcloud.com/oauth',
-        'display' : 'page',
+        'display' : 'popup',
         'scope' : scope,
         'response_type' : 'code',
         'v' : '5.62',
@@ -37,11 +37,12 @@ def page():
     
     data = requests.get(url, params = payload)
     #return data
+    return redirect (data.url, '302')
     #return "It works!"
     
 @app.route('/oauth')
 def oauth() :
-    return '1'
+    return request.form['code']
 
 if __name__ == '__main__':
     app.run()
