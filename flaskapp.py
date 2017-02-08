@@ -53,9 +53,9 @@ def oauth() :
         'code' : request.args.get('code')
     }
     
-    data = requests.get(url, params = payload).content
+    data = requests.get(url, params = payload).json
     
-    return data
+    return data.access_token
 
 if __name__ == '__main__':
     app.run()
