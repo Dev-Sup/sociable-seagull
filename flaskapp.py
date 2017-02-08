@@ -50,7 +50,7 @@ def oauth() :
         'client_id' : client_id,
         'client_secret' : client_secret,
         'redirect_uri' : 'http://sociableseagull-devsup.rhcloud.com/oauth',
-        'code' : request.form['code']
+        'code' : request.args.get('code')
     }
     
     data = requests.get(url, params = payload).content
